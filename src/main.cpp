@@ -37,7 +37,7 @@ Mat energyGen(Mat &image) {
 
   grad.convertTo(energy_image, CV_64F, 1.0 / 255.0);
 
-  if (demo) {
+  if (debug) {
     namedWindow("Energy Image", WINDOW_AUTOSIZE);
     imshow("Energy Image", energy_image);
   }
@@ -82,7 +82,7 @@ Mat energyMapGen(Mat &energy_image, SeamDirection seam_direction) {
     }
   }
 
-  if (demo) {
+  if (debug) {
     Mat color_enrgMap;
     double Cmin, Cmax;
     minMaxLoc(enrgMap, &Cmin, &Cmax);
@@ -287,10 +287,10 @@ int main(int argc, char **argv) {
   cout << "Seam carving completed. Result saved as 'output.jpg'." << endl;
 
   if (demo) {
-    namedWindow("Output Image", WINDOW_AUTOSIZE);
-    imshow("Output Image", image);
     namedWindow("Original Image", WINDOW_AUTOSIZE);
     imshow("Original Image", orgImage);
+    namedWindow("Output Image", WINDOW_AUTOSIZE);
+    imshow("Output Image", image);
     waitKey(0);
   }
 
